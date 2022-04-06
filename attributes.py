@@ -12,11 +12,11 @@ class Attributes:
             newValues = {}
             for (oldKey, newKey),(oldValue, newValue) in zip(self.values.items(), values.items()):
                 if type(oldValue) != type(newValue):
-                    print('Data type Error')
-                    return
+                    return 'Data type Error'
                 else:
                     newValues[newKey] = newValue
             self.values = newValues
+            return None
         else:
             self.values = values
 

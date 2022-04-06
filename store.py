@@ -4,22 +4,22 @@ class Cache:
 
     def get(self, key):
         if key not in self.cache.keys():
-            print(f'No Entry found for {key}')
-            return
-        print(str(self.cache[key]))
+            statement = f"No entry found for {key}"
+            return statement
+        return str(self.cache[key])
 
     def search(self, attributeKey, attributeValue):
         returnKeys = []
         for key in self.cache.keys():
             if self.cache[key].search(attributeKey, attributeValue):
                 returnKeys.append(key)
-        print(','.join(returnKeys))
+        return ','.join(returnKeys)
 
 
     def put(self, key, values):
         if key not in self.cache.keys():
             self.cache[key] = Attributes(key)
-        self.cache[key].add_values(values)
+        return self.cache[key].add_values(values)
     
     def delete(self, key):
         self.cache.pop(key)
@@ -28,7 +28,7 @@ class Cache:
         returnKeys = []
         for key in self.cache.keys():
             returnKeys.append(key)
-        print(','.join(returnKeys))
+        return ','.join(returnKeys)
     
 
     

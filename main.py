@@ -19,7 +19,7 @@ def getKeyValues(words, index):
 
 def main():
     cache = Cache()
-
+    answers = []
     user_input = input()
     while True:
         if user_input == 'exit':
@@ -28,22 +28,25 @@ def main():
         if words[0]=='put':
             key = words[1]
             values = getKeyValues(words, 2)
-            cache.put(key, values)
+            answers.append(cache.put(key, values))
         elif words[0]=='get':
             key = words[1]
-            cache.get(key)
+            answers.append(cache.get(key))
         elif words[0] == 'keys':
-            cache.keys()
+            answers.append(cache.keys())
             
         elif words[0] == 'search':
             key = words[1]
             value = getKeyValues(words, 1)
-            cache.search(key, value[key])
+            answers.append(cache.search(key, value[key]))
             
         elif words[0] == 'delete':
             key = words[1]
-            cache.delete(key)
+            answers.append(cache.delete(key))
         user_input = input()
+    for answer in answers:
+        if answer !=None:
+            print(answer)
 
 if __name__ == '__main__':
     main()
